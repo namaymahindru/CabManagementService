@@ -54,7 +54,19 @@ namespace CabManagementAPI.Controllers
         }
 
 
-        
+        [HttpPost("DoBooking")]
+
+        public bool DoBooking( CarBookModel obj )
+        {
+           _dbContext.carBookModels.Add(obj);
+            _dbContext.SaveChanges();
+            return true;
+        }
+
+
+
+
+
 
 
 
