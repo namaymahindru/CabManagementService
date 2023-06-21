@@ -1,0 +1,218 @@
+﻿
+@model CabManagementService.Models.UserRegistrationModel
+
+
+<style>
+
+
+
+    .button-64 {
+        align-items: center;
+        background-image: linear-gradient(144deg,#ffffff, #F7C621 50%,#FFFF66);
+        border: 0;
+        border-radius: 8px;
+        box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+        box-sizing: border-box;
+        color: black;
+        display: flex;
+        font-family: Phantomsans, sans-serif;
+        font-size: 20px;
+        justify-content: center;
+        line-height: 1em;
+        max-width: 100%;
+        min-width: 140px;
+        padding: 3px;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        cursor:pointer;
+    }
+
+        .button-64:active,
+        .button-64:hover {
+            outline: 0;
+        }
+
+        .button-64 span {
+            background-color: #F7C621;
+            padding: 16px 24px;
+            border-radius: 6px;
+            width: 100%;
+            height: 100%;
+            transition: 300ms;
+        }
+
+        .button-64:hover span {
+            background: none;
+        }
+
+    .button-65 {
+        align-items: center;
+        background-image: linear-gradient(144deg,#ffffff, #fffff6 50%,#FFFFf7);
+        border: 0;
+        border-radius: 8px;
+        box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+        box-sizing: border-box;
+        color: black;
+        display: flex;
+        font-family: Phantomsans, sans-serif;
+        font-size: 20px;
+        justify-content: center;
+        line-height: 1em;
+        max-width: 100%;
+        min-width: 140px;
+        padding: 3px;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+        .button-65 :active,
+        .button-65:hover {
+            outline: 0; 
+        }
+
+</style>
+
+
+<section class="contact_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+           
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5  offset-md-1">
+                 <div class="contact_form">
+
+                    <h4> REGISTER YOURSELF :)</h4>
+                    <span style="color:forestgreen">@TempData["msg"]</span>
+                    <form asp-action="RegisterUser" asp-controller="Home" method="post">
+                       
+                            <td> <input type="text" placeholder="Name" name="Name" id="Name" asp-for="Name">
+                             <span id="Name" style="color:red"></span>    
+                            </td>
+                            <td> <input type="tel" placeholder="Phone Number" name="PhoneNumber" id="PhoneNumber"  asp-for="PhoneNumber" >
+                               <span id="PhoneNumber" style="color:red"></span>
+                            </td>
+                            <td> <input type="email" placeholder="Email Address" name="Email" id="Email" asp-for="Email">
+                                <span id="Email" style="color:red"></span>    
+                            </td>
+                            <td> <input type="password" placeholder="Password" name="Password" id="Password" asp-for="Password">
+                            <span id="Password" style="color:red"></span>    
+                            </td>
+                           <td> <input type="text" style="display:none " value="User" placeholder="Role" name="Role" id="Role" asp-for="Role"> </td>
+                         <div class="btm_input">
+                            <input onclick="return CheckData()" id="btnSave" type="submit" value="Book Now" class="button-64" />
+                        </div>
+                       
+                        
+
+                    </form>
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                    <script>
+
+                        function CheckData()
+                        {
+                           // debugger;
+                        var result =true;
+
+                    var Name = $("#Name").val();
+
+                            if(Name=='')
+                            {
+                              $("#Name").html('Name is required');
+
+                                result=false;
+                            }
+                               else{
+                               $("#Name").html('');
+                              }
+
+
+                    var PhoneNumber= $("#PhoneNumber").val();
+
+                            if (PhoneNumber == '') {
+                            $("#PhoneNumber").html('Phone Number is required');
+                               result = false;
+                            }
+                            else {
+                            $("#PhoneNumber").html('');
+                            }
+
+
+                            var Email=  $("#Email").val();
+
+                            if (Email == '')
+                            {
+                               $("#Email").html('Email is required');
+                            result = false;
+                            }
+                            else 
+                            {
+                               $("#Email").html('');
+                            }
+
+
+                    var Password= $("#Password").val();
+
+                            if (Password == '')
+                            {
+                                $("#Password").html('Password is required');
+                                result = false;
+                            }
+                            else
+                            {
+                                $("#Password").html('');
+                            }
+
+                            return result;
+
+                            }
+
+                    </script>
+                 
+                </div>
+            </div>
+            <div class="col-md-6 px-0">
+                <div class="img-box">
+                    <img src="/images/contact-img.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function validatePhoneNumber(input_str) {
+       //alert(input_str);
+        var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+        //alert( re.test(input_str) );
+
+        if (re.test(input_str)==false)
+        {
+            $("#PhoneNumber").html('Phone Number is Invalid');
+
+        }
+        else
+        {
+            $("#PhoneNumber").html('');
+
+
+        }
+        
+    }
+
+    
+</script>
+
+
+

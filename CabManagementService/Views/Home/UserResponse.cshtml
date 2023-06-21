@@ -1,0 +1,77 @@
+﻿@{
+
+    Layout = "_LayoutAdmin";
+}
+
+
+
+@model List<ContactUsModel>
+
+
+<style>
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: goldenrod;
+    }
+
+    th {
+        background-color: darkgray;
+        color: white;
+    }
+
+</style>
+
+
+
+<table>
+
+    <tr>
+
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Message</th>
+
+        @* <th>Edit</th>
+        <th>Delete</th>*@
+
+    </tr>
+    @foreach (ContactUsModel item in Model)
+    {
+        <tr>
+
+            <td>@item.Name</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.Message</td>
+            @*<td>@item.Password</td>*@
+            @*<td><a href="/Home/EditStudent/@item.Id">Edit</a> </td>*@
+            @*<td><a onclick="return StudentDelete()" href="/Home/DeleteStudent/@item.Id">Delete</a></td>*@
+            @* <td>Edit</td>
+        <td>Delete</td>*@
+           
+        </tr>
+    }
+
+
+
+</table>
+
+<script>
+
+    function StudentDelete() {
+        var result = confirm("Are you sure That u want to delete the item?");
+        return result;
+    }
+
+
+
+</script>

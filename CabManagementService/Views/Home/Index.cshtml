@@ -1,0 +1,565 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+ 
+@model CabManagementService.Models.CarBookModel
+
+
+<style>
+
+
+
+    .button-64 {
+        align-items: center;
+        background-image: linear-gradient(144deg,#ffffff, #F7C621 50%,#FFFF66);
+        border: 0;
+        border-radius: 8px;
+        box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+        box-sizing: border-box;
+        color: black;
+        display: flex;
+        font-family: Phantomsans, sans-serif;
+        font-size: 20px;
+        justify-content: center;
+        line-height: 1em;
+        max-width: 100%;
+        min-width: 140px;
+        padding: 3px;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+        .button-64:active,
+        .button-64:hover {
+            outline: 0;
+        }
+
+        .button-64 span {
+            background-color: #F7C621;
+            padding: 16px 24px;
+            border-radius: 6px;
+            width: 100%;
+            height: 100%;
+            transition: 300ms;
+        }
+
+        .button-64:hover span {
+            background: none;
+        }
+
+    .button-65 {
+        align-items: center;
+        background-image: linear-gradient(144deg,#ffffff, #fffff6 50%,#FFFFf7);
+        border: 0;
+        border-radius: 8px;
+        box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        display: flex;
+        font-family: Phantomsans, sans-serif;
+        font-size: 20px;
+        justify-content: center;
+        line-height: 1em;
+        max-width: 100%;
+        min-width: 140px;
+        padding: 3px;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+        .button-65 :active,
+        .button-65:hover {
+            outline: 0;
+
+</style>
+
+<section class=" slider_section ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7 ">
+                <div class="box">
+                    <div class="detail-box">
+                        <h4>
+                            Welcome to
+                        </h4>
+                        <h1>
+                            Zoom Go
+                        </h1>
+                    </div>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+
+                                <div class="img-box">
+                                    <img src="/images/slider-img.png" alt="">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="img-box">
+                                    <img src="/images/slider-img.png" alt="">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="img-box">
+                                    <img src="/images/slider-img.png" alt="">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="img-box">
+                                    <img src="/images/slider-img.png" alt="">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="img-box">
+                                    <img src="/images/slider-img.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-box">
+                        <a href="" class="btn-1">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-5 ">
+                <div class="slider_form">
+                    <h4>
+                        BOOK YOUR RIDE
+                    </h4>
+                    <span style="color:forestgreen">@TempData["msg"]</span>
+                    <form asp-action="Submit" asp-controller="Home" method="post">
+
+                        <td>
+                            <input type="text" placeholder="Car Type" name="CarType" id="CarType" asp-for="CarType">
+                            <span id="eCar" style="color:red"></span>
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Pick Up Location" name="PickUpLocation" id="PickUpLocation" asp-for="PickUpLocation">
+                            <span id="ePick" style="color:red"></span>
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Drop Location" name="DropLocation" id="DropLocation" asp-for="DropLocation">
+                            <span id="eDrop" style="color:red"></span>
+                        </td>
+                        <div class="btm_input">
+                            <td>
+                                <input type="text" placeholder="Phone Number" name="PhoneNumber" id="PhoneNumber" asp-for="PhoneNumber">
+                                <span id="ePhoneNumber" style="color:red"></span>
+                            </td>
+                            <input onclick="return CheckData()" id="btnSave" type="submit" value="Book Now" class="button-64" />
+                        </div>
+                    </form>
+
+
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+                    <script>
+
+                        function CheckData() {
+                            // debugger;
+                            var result = true;
+
+                            var CarType = $("#CarType").val();
+
+                            if (CarType == '') {
+                                $("#eCar").html('Car Type is required');
+                                result = false;
+                            }
+                            else {
+                                $("#eCar").html('');
+                            }
+
+
+                            var PickUpLocation = $("#PickUpLocation").val();
+
+                            if (PickUpLocation == '') {
+                                $("#ePick").html('Pick Up Location is required');
+                                result = false;
+                            }
+                            else {
+                                $("#ePick").html('');
+                            }
+
+
+                            var DropLocation = $("#DropLocation").val();
+
+                            if (DropLocation == '') {
+                                $("#eDrop").html('Drop Location is required');
+                                result = false;
+                            }
+                            else {
+                                $("#eDrop").html('');
+                            }
+
+
+                            var ePhoneNumber = $("#PhoneNumber").val();
+
+                            if (ePhoneNumber == '') {
+                                $("#ePhoneNumber").html('Phone Number is required');
+                                result = false;
+                            }
+                            else {
+                                $("#ePhoneNumber").html('');
+                            }
+
+                            return result;
+
+
+                        }
+
+
+
+
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </section>
+<!-- end slider section -->
+  </div>
+ 
+<!-- about section -->
+
+<section class="about_section layout_padding">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 offset-lg-2 offset-md-1">
+                <div class="detail-box">
+                    <h2>
+                        About <br>
+                        Zoom Go
+                    </h2>
+                    <p>
+                      Zoom Go is a dynamic and innovative cab service company that takes you on a hassle-free journey. With their fleet of modern vehicles and skilled drivers, they ensure swift and comfortable rides, making transportation a breeze. Experience the convenience and efficiency of Zoom Go for all your travel needs.
+                    </p>
+                    <a href="">
+                        Read More
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="img-box">
+                    <img src="/images/about-img.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end about section -->
+<!-- service section -->
+
+<section class="service_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Our <br>
+                Taxi Services
+            </h2>
+        </div>
+        <div class="service_container">
+            <div class="box">
+                <div class="img-box">
+                    <img src="/images/delivery-man.png" alt="">
+                </div>
+                <div class="detail-box">
+                    <h5>
+                        Private Driver
+                    </h5>
+                  
+                    <a href="">
+                        Read More
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="img-box">
+                    <img src="/images/airplane.png" alt="">
+                </div>
+                <div class="detail-box">
+                    <h5>
+                        Airport Transfer
+                    </h5>
+                   
+                    <a href="">
+                        Read More
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="img-box">
+                    <img src="/images/backpack.png" alt="">
+                </div>
+                <div class="detail-box">
+                    <h5>
+                        Luggage Transfer
+                    </h5>
+                   
+                    <a href="">
+                        Read More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end service section -->
+
+<!-- client section -->
+
+<section class="client_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                What Our<br>
+                Client <br>
+                Says 
+            </h2>
+        </div>
+        <div class="client_container">
+            <div class="carousel-wrap ">
+                <div class="owl-carousel">
+                    <div class="item">
+                        <div class="box">
+                            <div class="img-box">
+                                <img src="/images/random2.jpeg" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h3>
+                                    Rohit Singla
+                                </h3>
+                                <p>
+                                    I had an excellent experience with the taxi service during my recent trip. The booking process was quick and efficient, and the dispatcher was friendly and accommodating. The taxi arrived right on schedule, and the driver was not only punctual but also very knowledgeable about the city.
+                                </p>
+                                <img src="/images/quote.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="box">
+                            <div class="img-box">
+                                <img src="/images/random1.jpeg" style="width:125px" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h3>
+                                    Varun Mehta
+                                </h3>
+                                <p>
+                                    I recently used the taxi service in my city, and I must say I was thoroughly impressed! The drivers were extremely professional and courteous, making sure I felt safe and comfortable throughout the entire ride
+                                </p>
+                                <img src="/images/quote.png"  alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end client section -->
+<!-- contact section -->
+
+<section class="contact_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Any Problems <br>
+                Any Questions
+            </h2>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5  offset-md-1">
+                <div class="contact_form">
+                    <h4>
+                        Get In touch
+                    </h4>
+                    <form asp-action="ContactUs" asp-controller="Home " method="post">
+                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="Phone Number">
+                        <input type="text" placeholder="Message" class="message_input">
+                        <input type="submit" value="Send" />
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 px-0">
+                <div class="img-box">
+                    <img src="/images/contact-img.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end contact section -->
+<!-- app section -->
+
+<section class="app_section layout_padding2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="detail-box">
+                    <h2>
+                        Download Our app
+                    </h2>
+                    <div class="text-box">
+                        <h5>
+                            details
+                        </h5>
+                       
+                    </div>
+                    <div class="text-box">
+                        <h5>
+                            How it works
+                        </h5>
+                       
+                    </div>
+                    <div class="btn-box">
+                        <a href="">
+                            <img src="/images/playstore.png" alt="">
+                        </a>
+                        <a href="">
+                            <img src="/images/appstore.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="img-box">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end app section -->
+<!-- why section -->
+
+<section class="why_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Why <br>
+                Choose Us
+            </h2>
+        </div>
+        <div class="why_container">
+            <div class="box">
+                <div class="img-box">
+                    <img src="/images/delivery-man-white.png" alt="" class="img-1">
+                    <img src="/images/delivery-man-black.png" alt="" class="img-2">
+                </div>
+                <div class="detail-box">
+                    <h5>
+                        Best Drivers
+                    </h5>
+                    <p>
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+                    </p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="img-box">
+                    <img src="/images/shield-white.png" alt="" class="img-1">
+                    <img src="/images/shield-black.png" alt="" class="img-2">
+                </div>
+                <div class="detail-box">
+                    <h5>
+                        Safe and Secure
+                    </h5>
+                    <p>
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+                    </p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="img-box">
+                    <img src="/images/repairing-service-white.png" alt="" class="img-1">
+                    <img src="/images/repairing-service-black.png" alt="" class="img-2">
+                </div>
+                <div class="detail-box">
+                    <h5>
+                        24x7 support
+                    </h5>
+                    <p>
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end why section -->
+<!-- info section -->
+
+<section class="info_section layout_padding-top layout_padding2-bottom">
+    <div class="container">
+        <div class="box">
+            <div class="info_form">
+                <h4>
+                    Subscribe Our Newsletter
+                </h4>
+                <form action="">
+                    <input type="text" placeholder="Enter your email">
+                    <div class="d-flex justify-content-end">
+                        <button>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="info_social">
+                <div>
+                    
+                        <img src="//images/fb.png" alt="">
+
+                </div>
+                <div>
+
+                    
+                        <img src="/images/twitter.png" alt="">
+                  
+                </div>
+                <div>
+                    
+                        <img src="/images/linkedin.png" alt="">
+                   
+                </div>
+                <div>
+                    
+                        <img src="/images/instagram.png" alt="">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- end info section -->

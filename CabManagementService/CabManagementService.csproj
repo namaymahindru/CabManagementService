@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\bootstrap.css" />
+    <None Include="wwwroot\css\responsive.css" />
+    <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\css\style.css.map" />
+    <None Include="wwwroot\css\style.scss" />
+    <None Include="wwwroot\icons8-car-roof-box-color-96.png" />
+    <None Include="wwwroot\images\about-img.png" />
+    <None Include="wwwroot\images\airplane.png" />
+    <None Include="wwwroot\images\appstore.png" />
+    <None Include="wwwroot\images\backpack.png" />
+    <None Include="wwwroot\images\client-1.png" />
+    <None Include="wwwroot\images\client-2.png" />
+    <None Include="wwwroot\images\contact-bg.png" />
+    <None Include="wwwroot\images\contact-img.png" />
+    <None Include="wwwroot\images\delivery-man-black.png" />
+    <None Include="wwwroot\images\delivery-man-white.png" />
+    <None Include="wwwroot\images\delivery-man.png" />
+    <None Include="wwwroot\images\dribble.png" />
+    <None Include="wwwroot\images\fb.png" />
+    <None Include="wwwroot\images\hero-bg.jpg" />
+    <None Include="wwwroot\images\hero-bg2.png" />
+    <None Include="wwwroot\images\instagram.png" />
+    <None Include="wwwroot\images\link.png" />
+    <None Include="wwwroot\images\linkedin.png" />
+    <None Include="wwwroot\images\logo.png" />
+    <None Include="wwwroot\images\menu.png" />
+    <None Include="wwwroot\images\mobile.png" />
+    <None Include="wwwroot\images\news-img.jpg" />
+    <None Include="wwwroot\images\next-white.png" />
+    <None Include="wwwroot\images\next.png" />
+    <None Include="wwwroot\images\pinterest.png" />
+    <None Include="wwwroot\images\playstore.png" />
+    <None Include="wwwroot\images\prev-blue.png" />
+    <None Include="wwwroot\images\prev-white.png" />
+    <None Include="wwwroot\images\prev.png" />
+    <None Include="wwwroot\images\quote.png" />
+    <None Include="wwwroot\images\repairing-service-black.png" />
+    <None Include="wwwroot\images\repairing-service-white.png" />
+    <None Include="wwwroot\images\right-arrow.png" />
+    <None Include="wwwroot\images\search-icon.png" />
+    <None Include="wwwroot\images\shield-black.png" />
+    <None Include="wwwroot\images\shield-white.png" />
+    <None Include="wwwroot\images\slider-img.png" />
+    <None Include="wwwroot\images\twitter.png" />
+    <None Include="wwwroot\js\bootstrap.js" />
+    <None Include="wwwroot\js\jquery-3.4.1.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+  </ItemGroup>
+
+</Project>
